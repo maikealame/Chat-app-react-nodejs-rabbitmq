@@ -1,0 +1,8 @@
+# Run tests on auth-api service (when docker-compose up not running)
+docker-compose run auth-api npm test
+
+# Run tests on front service (when docker-compose up not running)
+docker-compose run front npm test
+
+# Run e2e tests on front service
+docker-compose --profile test run e2e
