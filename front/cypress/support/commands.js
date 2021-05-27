@@ -1,5 +1,5 @@
 Cypress.Commands.add('loginWith', ({ email, password }) =>
-    cy.visit('localhost:3000')
+    cy.visit('/')
         .get('#email')
         .type(email)
         .get('#password')
@@ -9,7 +9,7 @@ Cypress.Commands.add('loginWith', ({ email, password }) =>
 )
 
 Cypress.Commands.add('registerWith', ({username, email, password, cpassword }) =>
-    cy.visit('localhost:3000/signup')
+    cy.visit('/signup')
         .get('#username')
         .type(username)
         .get('#email')

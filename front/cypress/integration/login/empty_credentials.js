@@ -1,7 +1,7 @@
 import {When, Given, Then} from 'cypress-cucumber-preprocessor/steps'
 
 When('I login with an empty field', () => {
-    cy.visit('localhost:3000')
+    cy.visit('/')
         .get('#password')
         .type("random_password")
         .get('#submit-btn')

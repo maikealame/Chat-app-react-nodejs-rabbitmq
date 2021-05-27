@@ -1,7 +1,7 @@
 import {When, Given, Then} from 'cypress-cucumber-preprocessor/steps'
 
 When('I register with an empty field', () => {
-    cy.visit('localhost:3000/signup')
+    cy.visit('/signup')
         .get('#username')
         .type('random')
         .get('#password')
