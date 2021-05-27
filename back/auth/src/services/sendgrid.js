@@ -1,5 +1,6 @@
 const sgMail = require('@sendgrid/mail')
 const config = require('../config')
+const bypass = true
 
 const sendMail = (next, email, subject, text, message) => {
     try {
@@ -25,22 +26,27 @@ const sendMail = (next, email, subject, text, message) => {
 };
 
 const mailCreateAccount = (next, email, activationKey) => {
+    if(bypass) return true
     return sendMail(next, email,'MyTelegram confirm account', 'Click here to activate', `<div><h1>Hello new user!</h1><p>Click <a href="${config.hostname}/api/auth/confirm?key=${activationKey}">link</a> to activate your new account.</p></div><div><h1>Hello developer!</h1><p>Feel free to change this template ;).</p></div>`)
 };
 
 const mailLogin = (next, email) => {
+    if(bypass) return true
     return sendMail(next, email, 'MyTelegram login notification', 'Click here to see infos', `<div><h1>Hello user!</h1><p>A new connection was established </p></div>`)
 };
 
 const mailRecover = (next, email, recoverKey) => {
+    if(bypass) return true
     return sendMail(next, email, 'MyTelegram recover password', 'Click here to see infos', `<div><h1>Hello user!</h1><p>Do you want to recover your password  clik on this <a href="${config.frontUrl}/recover_password/:key=${recoverKey}">link</a></p></div>`)
 };
 
 const mailConfirmNewPassword = (next, email) => {
+    if(bypass) return true
     return sendMail(next, email, 'MyTelegram new password as been set', 'Click here to see infos', `<div><h1>Hello user!</h1><p>Your password as been successfully reset</p></div>`)
 };
 
 const mailRoomRequest = (next, email, username, roomName) => {
+    if(bypass) return true
     return sendMail(next, email, 'MyTelegram room invitation', 'Click here to see infos', `<div><h1>Hello user!</h1><p>User ${username} add you to a new room: ${roomName} you can accept or decline</p></div>`)
 };
 exports.mailCreateAccount = mailCreateAccount;
